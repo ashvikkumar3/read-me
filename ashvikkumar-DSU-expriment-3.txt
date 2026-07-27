@@ -1,0 +1,431 @@
+# ======================================================================
+PRACTICAL 3a: LINEAR SEARCH FOR NUMBERS
+
+--- Main Program 3a ---
+
+C Program:
+#include <stdio.h>
+
+int main() {
+int n, key, flag = 0;
+
+```
+printf("Enter number of elements: ");
+scanf("%d", &n);
+
+int arr[n];
+printf("Enter %d elements:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+}
+
+printf("Enter element to search: ");
+scanf("%d", &key);
+
+for (int i = 0; i < n; i++) {
+    if (arr[i] == key) {
+        printf("Element found at position %d\n", i + 1);
+        flag = 1;
+        break;
+    }
+}
+
+if (flag == 0) {
+    printf("Element Not Found\n");
+}
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of elements: 5
+Enter 5 elements:
+10 25 30 45 60
+Enter element to search: 45
+Element found at position 4
+
+--- Exercise 1: Search Multiple Occurrences of an Element ---
+
+C Program:
+#include <stdio.h>
+
+int main() {
+int n, key, found = 0;
+
+```
+printf("Enter number of elements: ");
+scanf("%d", &n);
+
+int arr[n];
+printf("Enter %d elements:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+}
+
+printf("Enter element to search: ");
+scanf("%d", &key);
+
+for (int i = 0; i < n; i++) {
+    if (arr[i] == key) {
+        printf("Element found at position %d\n", i + 1);
+        found = 1;
+    }
+}
+
+if (!found) {
+    printf("Element Not Found\n");
+}
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of elements: 5
+Enter 5 elements:
+10 20 10 30 10
+Enter element to search: 10
+Element found at position 1
+Element found at position 3
+Element found at position 5
+
+--- Exercise 2: Count Number of Comparisons Performed ---
+
+C Program:
+#include <stdio.h>
+
+int main() {
+int n, key, comparisons = 0, flag = 0;
+
+```
+printf("Enter number of elements: ");
+scanf("%d", &n);
+
+int arr[n];
+printf("Enter %d elements:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+}
+
+printf("Enter element to search: ");
+scanf("%d", &key);
+
+for (int i = 0; i < n; i++) {
+    comparisons++;
+    if (arr[i] == key) {
+        printf("Element found at position %d\n", i + 1);
+        flag = 1;
+        break;
+    }
+}
+
+if (!flag) {
+    printf("Element Not Found\n");
+}
+
+printf("Total comparisons performed: %d\n", comparisons);
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of elements: 5
+Enter 5 elements:
+5 12 19 25 30
+Enter element to search: 25
+Element found at position 4
+Total comparisons performed: 4
+
+--- Exercise 3: Find the Largest Element Using Linear Search ---
+
+C Program:
+#include <stdio.h>
+
+int main() {
+int n;
+
+```
+printf("Enter number of elements: ");
+scanf("%d", &n);
+
+int arr[n];
+printf("Enter %d elements:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+}
+
+int max = arr[0];
+for (int i = 1; i < n; i++) {
+    if (arr[i] > max) {
+        max = arr[i];
+    }
+}
+
+printf("Largest element is: %d\n", max);
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of elements: 5
+Enter 5 elements:
+12 45 7 89 23
+Largest element is: 89
+
+--- Exercise 4: Find the Smallest Element Using Linear Search ---
+
+C Program:
+#include <stdio.h>
+
+int main() {
+int n;
+
+```
+printf("Enter number of elements: ");
+scanf("%d", &n);
+
+int arr[n];
+printf("Enter %d elements:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+}
+
+int min = arr[0];
+for (int i = 1; i < n; i++) {
+    if (arr[i] < min) {
+        min = arr[i];
+    }
+}
+
+printf("Smallest element is: %d\n", min);
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of elements: 5
+Enter 5 elements:
+12 45 7 89 23
+Smallest element is: 7
+
+--- Exercise 5: Search Element in a Dynamically Created Array ---
+
+C Program:
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+int n, key, flag = 0;
+
+```
+printf("Enter size of dynamic array: ");
+scanf("%d", &n);
+
+int *arr = (int *)malloc(n * sizeof(int));
+
+printf("Enter %d elements:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+}
+
+printf("Enter element to search: ");
+scanf("%d", &key);
+
+for (int i = 0; i < n; i++) {
+    if (arr[i] == key) {
+        printf("Element found at position %d\n", i + 1);
+        flag = 1;
+        break;
+    }
+}
+
+if (!flag) {
+    printf("Element Not Found\n");
+}
+
+free(arr);
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter size of dynamic array: 4
+Enter 4 elements:
+100 200 300 400
+Enter element to search: 300
+Element found at position 3
+
+# ======================================================================
+PRACTICAL 3b: LINEAR SEARCH FOR STRINGS
+
+--- Main Program 3b ---
+
+C Program:
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+int n, flag = 0;
+
+```
+printf("Enter number of strings: ");
+scanf("%d", &n);
+
+char arr[n][50];
+char key[50];
+
+printf("Enter %d strings:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%s", arr[i]);
+}
+
+printf("Enter string to search: ");
+scanf("%s", key);
+
+for (int i = 0; i < n; i++) {
+    if (strcmp(arr[i], key) == 0) {
+        printf("String found at position %d\n", i + 1);
+        flag = 1;
+        break;
+    }
+}
+
+if (flag == 0) {
+    printf("String Not Found\n");
+}
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of strings: 5
+Enter 5 strings:
+Apple
+Banana
+Orange
+Mango
+Grapes
+Enter string to search: Mango
+String found at position 4
+
+--- Exercise 1: Search Multiple Occurrences of a String ---
+
+C Program:
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+int n, found = 0;
+
+```
+printf("Enter number of strings: ");
+scanf("%d", &n);
+
+char arr[n][50];
+char key[50];
+
+printf("Enter %d strings:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%s", arr[i]);
+}
+
+printf("Enter string to search: ");
+scanf("%s", key);
+
+for (int i = 0; i < n; i++) {
+    if (strcmp(arr[i], key) == 0) {
+        printf("String found at position %d\n", i + 1);
+        found = 1;
+    }
+}
+
+if (!found) {
+    printf("String Not Found\n");
+}
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of strings: 5
+Enter 5 strings:
+Apple
+Mango
+Banana
+Mango
+Orange
+Enter string to search: Mango
+String found at position 2
+String found at position 4
+
+--- Exercise 2: Count Occurrences of a Given String ---
+
+C Program:
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+int n, count = 0;
+
+```
+printf("Enter number of strings: ");
+scanf("%d", &n);
+
+char arr[n][50];
+char key[50];
+
+printf("Enter %d strings:\n", n);
+for (int i = 0; i < n; i++) {
+    scanf("%s", arr[i]);
+}
+
+printf("Enter string to count: ");
+scanf("%s", key);
+
+for (int i = 0; i < n; i++) {
+    if (strcmp(arr[i], key) == 0) {
+        count++;
+    }
+}
+
+printf("The string '%s' occurred %d time(s).\n", key, count);
+
+return 0;
+
+```
+
+}
+
+Output:
+Enter number of strings: 5
+Enter 5 strings:
+Apple
+Mango
+Banana
+Mango
+Mango
+Enter string to count: Mango
+The string 'Mango' occurred 3 time(s).
